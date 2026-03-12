@@ -102,7 +102,7 @@ https://github.com/alvaroroman38
 
 ---
 
-## ⭐ Si te sirve.s..
+## ⭐ Si te sirve...
 
 Si eres estudiante de DAW y este repositorio te ayuda, ¡genial!
 Puedes usar los ejercicios como referencia para practicar.
