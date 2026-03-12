@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sistema>
+    <producto codigo="P001">
+        <nombre></nombre>
+        <descripcion></descripcion>
+        <precio></precio>
+        <categoria></categoria>
+        <disponibilidad></disponibilidad>
+        <img></img>
+    </producto>
+</sistema>

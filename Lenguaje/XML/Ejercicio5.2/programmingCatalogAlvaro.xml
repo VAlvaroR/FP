@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="styles.css"?>
+<catalog>
+    <book>
+        <title>Clean Code</title>
+        <author>Robert C. Martin</author>
+        <year>2008</year>
+        <publisher>Prentice Hall</publisher>
+    </book>
+    <book>
+        <title>The Pragmatic Programmer</title>
+        <author>Andrew Hunt y David Thomas</author>
+        <year>1999</year>
+        <publisher>Addison-Wesley</publisher>
+    </book>
+
+    <book>
+        <title>Design Patterns</title>
+        <author>Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides</author>
+        <year>1994</year>
+        <publisher>Addison-Wesley</publisher>
+    </book>
+</catalog>
