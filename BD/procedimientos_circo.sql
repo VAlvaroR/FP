@@ -186,20 +186,159 @@ DELIMITER ;
 
 call atracciones_getListConAntiguedad(30);*/
 
-/* Ejercicio 4: Crea un procedimiento de nombre artistas_getListMasAnimalesCuida que devuelva los datos del/os artista/s que cuidan a más animales de los indicados
-(parámetro que se le envía).
+/* Ejercicio 4: Crea un procedimiento de nombre artistas_getListMasAnimalesCuida que devuelva los datos del/os artista/s que cuidan a más animales
+de los indicados (parámetro que se le envía).
 Pista: Como la consulta puede devolver más de un artista no podremos hacer uso de INTO....*/
 
-DELIMITER $$ 
+/* DELIMITER $$ 
 
 CREATE PROCEDURE artistas_getListMasAnimalesCuida(p_numAni INT) 
 BEGIN
-	
-    SELECT 
+	SELECT art.* FROM ARTISTAS art
+    WHERE art.nif IN (SELECT anArt.nif_artista
+			   from ANIMALES_ARTISTAS anArt
+               GROUP BY nif_artista 
+               having p_numAni < count(*))
+	ORDER BY nif;
+
     
 END$$
 
 DELIMITER ;
+
+call artistas_getListMasAnimalesCuida(1);*/
+
+/* Ejercicio 5: Crea un procedimiento de nombre atracciones_getListPorFecha que devuelva los datos de las atracciones que han comenzado
+a partir de la fecha indicada.
+Pista: Recordar que las fechas son tratadas como cadenas...y tener en cuenta el formato.
+Añade una nueva atracción con la fecha de inicio actual.
+Llama al procedimiento empleando la fecha actual menos 3 días (haz uso de la función DATE_SUB y curdate)*/
+
+/*DELIMITER $$
+
+CREATE PROCEDURE atracciones_getListPorFecha(p_fechaInd char(10))
+begin
+	SELECT * 
+    FROM ATRACCIONES 
+    WHERE fecha_inicio > p_fechaInd
+    ORDER BY nombre;
+
+end$$
+
+DELIMITER ;
+
+call atracciones_getListPorFecha('2001-01-01');
+call atracciones_getListPorFecha(DATE_SUB(curdate(), INTERVAL 3 DAY));*/
+
+
+/* Ejercicio 6: Crea un procedimiento de nombre pistas_add y que añada una nueva pista.
+Nota: Aún no vimos la validación de datos que tendría que darse en el paso de parámetros. 
+En este caso podríamos tener condiciones if en el que se comprueba sin el aforo es mayor que cero....
+Se puede hacer uso de la función ROW_COUNT() para saber cuantas filas fueron añadidas, borradas o modificadas.
+Importante: Los parámetros deben de tener el mismo tipo de dato y tamaño que el que está definido a nivel de columnas en la tabla PISTAS.*/
+
+/*DELIMITER $$
+
+CREATE PROCEDURE pistas_add(p_nombre VARCHAR(50), p_aforo smallint)
+begin
+	insert into PISTAS (nombre, aforo) VALUES (p_nombre, p_aforo);
+	select row_count();
+	
+end$$
+
+DELIMITER ;
+
+CALL pistas_add('El gran misil',134);*/
+
+
+/* Ejercicio 7: Crea un procedimiento de nombre atracciones_update que permita modificar los datos de una atracción
+(no se permite actualizar su clave primaria).
+Modifica la fecha de inicio de la atracción 'El gran felino' y ponla un día después de la que tiene ahora mismo.
+Pista: Tendrás que guardar las ganancias y la fecha de inicio que tiene para poder enviar ese dato al procedimiento.
+Comprueba como al llamar al método con una atracción que no existe, row_count va a devolver 0.*/
+
+/*DELIMITER $$
+
+CREATE PROCEDURE atracciones_update(p_nombre varchar(50), p_fecIni DATE, p_ganancias decimal(8,2))
+begin
+	
+    UPDATE ATRACCIONES SET fecha_inicio = p_fecIni, ganancias = p_ganancias 
+    WHERE nombre = p_nombre;
+	
+    SELECT row_count();
+    
+end$$
+
+DELIMITER ;*/
+
+
+/* Ejercicio 8: Crea un procedimiento de nombre pistas_delete que borre una pista por su nombre. Haz que borre en
+base al patrón nombre% (empleando el Like). Borra la atracción que hayas añadido en el ejercicio 6 mandando las
+primeras letras (ten cuidado de que no haya otra atracción con esas letras al comienzo).
+Pista: Emplea la función CONCAT paraPISTAS el LIKE*/
+
+/*DELIMITER $$
+
+CREATE PROCEDURE pistas_delete(p_nombre VARCHAR(50))
+BEGIN
+	DELETE FROM PISTAS WHERE nombre LIKE concat(p_nombre,'%');
+
+END$$
+
+DELIMITER ;
+
+CALL pistas_delete('El gran m');*/
+
+-- PROCEDIMIENTOS CON PARÁMETRO DE SALIDA
+
+/* Ejercicio 1
+Crea un procedimiento de nombre pistas_getAforo al que se le pase el nombre de una pista y devuelve en forma de parámetro
+de salida su aforo.*/
+/*DELIMITER $$ 
+
+CREATE PROCEDURE pistas_getAforo(p_nombre VARCHAR(50), OUT p_aforo smallint)
+begin
+	SELECT aforo INTO p_aforo FROM PISTAS WHERE nombre=p_nombre;
+	
+end$$
+
+DELIMITER ;
+
+CALL pistas_getAforo('LATERAL1',@aforo);	
+SELECT @aforo;*/
+
+/* Ejercicio 2
+Crea un procedimiento de nombre artistas_getNumAnimalesCuida al que se le pase el nif de un artista y que devuelva en forma
+de parámetro de salida a cuantos animales cuida.*/
+DELIMITER $$ 
+
+CREATE PROCEDURE artistas_getNumAnimalesCuida(nif VARCHAR(50), OUT p_aforo smallint)
+
+
+/* Ejercicio 3
+Crea un procedimiento de nombre animales_getNombreAforo al que se le pase el nombre de un animal y devuelva, empleando un
+parámetro de salida y haciendo uso del procedimiento creado en el ejercicio 1, de una cadena con el formato: NombreAnimal:peso:pista:aforo
+Pista: Emplea la función CONCAT*/
+
+
+
+/* Ejercicio 4
+Crea un procedimiento de nombre artistas_getNumAtracAnimal al que se le pase los apellidos y nombre de un artista y devuelva,
+empleando un parámetro de salida, el número de atracciones en las que trabaja y el número de animales que cuida (empleando el
+procedimiento del ejercicio 2) con el formato: nif:NumAtracciones:NumAnimales.
+Nota: Suponemos que no hay artistas con el mismo nombre y apellidos.*/
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
