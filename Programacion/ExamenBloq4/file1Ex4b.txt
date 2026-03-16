@@ -1,0 +1,8 @@
+373 Lenguajes de Marcas y Sistemas de Gestión de Información LMSGI 3 horas
+483 Sistemas informáticos SI 5 horas
+484 Bases de Datos BD 6 horas
+485 Programación PROG 8 horas
+487 Entornos de Desarrollo ED 3 horas
+1665 Digitalización Aplicada al Sistema Productivo DASP 1 horas
+1708 Sostenibilidad Aplicada al Sistema Productivo SASP 1 horas
+1709 Itinerario Profesional para la Empleabilidad IPE 3 horas
