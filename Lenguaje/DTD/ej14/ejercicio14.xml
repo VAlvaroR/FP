@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE app-pedidos [
+    <!ELEMENT app-pedidos (pedido)*>
+    <!ELEMENT pedido (cantidad,peso?)>
+    <!ATTLIST pedido num-serie ID #REQUIRED>
+    <!ELEMENT cantidad (#PCDATA)>
+    <!ELEMENT peso (#PCDATA)>
+]>
+
+<app-pedidos>
+    <pedido num-serie="P1342">
+        <cantidad>2</cantidad>
+        <peso>3</peso>
+    </pedido>
+</app-pedidos>

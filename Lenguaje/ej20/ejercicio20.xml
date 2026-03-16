@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE entregas [
+    <!ELEMENT entregas (lote)+>
+    <!ELEMENT lote (pale)+>
+    <!ELEMENT pale (numero-cajas,contenido,peso,forma-manipulacion)>
+    <!ELEMENT contenido (nombre,procedencia,numero-serie,peso-ind,unidad-peso?)>
+    <!ELEMENT numero-cajas (#PCDATA)>
+    <!ELEMENT peso (#PCDATA)>
+    <!ELEMENT forma-manipulacion (#PCDATA)>
+    <!ELEMENT nombre (#PCDATA)>
+    <!ELEMENT procedencia (pais)*>
+    <!ELEMENT pais (#PCDATA)>
+    <!ELEMENT numero-serie (#PCDATA)>
+    <!ELEMENT peso-ind (#PCDATA)>
+    <!ELEMENT unidad-peso (#PCDATA)>
+]>
+<entregas>
+</entregas>

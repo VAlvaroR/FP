@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE listaventas [
+    <!ELEMENT listaventas (venta)+>
+    <!ELEMENT venta (importe,comprador,vendedor,fecha?,codigo)>
+    <!ELEMENT importe (#PCDATA)>
+    <!ELEMENT comprador (#PCDATA)>
+    <!ELEMENT vendedor (#PCDATA)>
+    <!ELEMENT fecha (#PCDATA)>
+    <!ELEMENT codigo (#PCDATA)>
+]>
+
+<listaventas>
+    <venta>
+        <importe>234</importe>
+        <comprador>Felipe</comprador>
+        <vendedor>Juan</vendedor>
+        <codigo>392</codigo>
+    </venta>
+    <venta>        
+        <importe>234</importe>
+        <comprador>Felipe</comprador>
+        <vendedor>Juan</vendedor>
+        <codigo>392</codigo>
+    </venta>
+</listaventas>

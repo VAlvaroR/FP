@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE listafacturas [
+    <!ELEMENT listafacturas (factura)+>
+    <!ELEMENT factura (fecha?, emisor,cif,pagador,importe)>
+    <!ELEMENT fecha (#PCDATA)>
+    <!ELEMENT emisor (nombre,volumenventas?)>
+    <!ELEMENT pagador (nombre,volumenventas?)>
+    <!ELEMENT nombre (#PCDATA)>
+    <!ELEMENT volumenventas (#PCDATA)>
+    <!ELEMENT cif (#PCDATA)>
+    <!ELEMENT importe (#PCDATA)>
+]>
+<listafacturas>
+    <factura>
+        <emisor>
+            <nombre>Salvi</nombre>
+            <volumenventas>2</volumenventas>
+        </emisor>
+        <cif>1293834</cif>
+        <pagador>
+            <nombre>Carlos</nombre>
+        </pagador>
+        <importe>2442</importe>
+    </factura>
+
+    <factura>
+        <emisor>
+            <nombre>Salvi</nombre>
+            <volumenventas>2</volumenventas>
+        </emisor>
+        <cif>1293834</cif>
+        <pagador>
+            <nombre>Carlos</nombre>
+        </pagador>
+        <importe>2442</importe>
+    </factura>
+</listafacturas>
