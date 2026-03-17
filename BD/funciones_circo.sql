@@ -9,4 +9,4 @@ Nota: Indicar que Mysql ya dispone de dicha función, a la que se le pasa una fe
 
 DELIMITER //
 
-CREATE FUNCTION utilidades_getMesEnLetra() RETURNS 
+CREATE FUNCTION utilidades_getMesEnLetra() RETURNS sdsd
