@@ -310,16 +310,42 @@ SELECT @aforo;*/
 /* Ejercicio 2
 Crea un procedimiento de nombre artistas_getNumAnimalesCuida al que se le pase el nif de un artista y que devuelva en forma
 de parámetro de salida a cuantos animales cuida.*/
-DELIMITER $$ 
+/*DELIMITER $$ 
 
-CREATE PROCEDURE artistas_getNumAnimalesCuida(nif VARCHAR(50), OUT p_aforo smallint)
+CREATE PROCEDURE artistas_getNumAnimalesCuida(p_nif VARCHAR(50), OUT p_numAni smallint)
+BEGIN
+	select count(*) into p_numAni from ANIMALES_ARTISTAS where nif = p_nif;
+	
+END$$
 
+DELIMITER ;
+
+CALL artistas_getNumAnimalesCuida('11111111A',@numAnimales);	
+SELECT @numAnimales;*/
 
 /* Ejercicio 3
 Crea un procedimiento de nombre animales_getNombreAforo al que se le pase el nombre de un animal y devuelva, empleando un
 parámetro de salida y haciendo uso del procedimiento creado en el ejercicio 1, de una cadena con el formato: NombreAnimal:peso:pista:aforo
 Pista: Emplea la función CONCAT*/
+/*DELIMITER $$ 
 
+CREATE PROCEDURE animales_getNombreAforo(p_nombreAnimal VARCHAR(50), OUT p_sal VARCHAR(100))
+BEGIN
+	DECLARE v_peso float;
+    DECLARE v_aforo smallint;
+    DECLARE v_nombrePista varchar(50);
+    
+    SELECT nombre_pista, peso
+    INTO v_nombrePista, v_peso
+    FROM ANIMALES
+    where nombre=p_nombreAnimal;
+    
+    CALL pistas_getAforo(v_nombrePista, v_aforo);
+    
+    SET p_sal = CONCAT(p_nombreAnimal,':',v_peso,':',v_nombrePista,':',v_aforo);
+	
+END$$
+DELIMITER ;*/
 
 
 /* Ejercicio 4
@@ -327,18 +353,90 @@ Crea un procedimiento de nombre artistas_getNumAtracAnimal al que se le pase los
 empleando un parámetro de salida, el número de atracciones en las que trabaja y el número de animales que cuida (empleando el
 procedimiento del ejercicio 2) con el formato: nif:NumAtracciones:NumAnimales.
 Nota: Suponemos que no hay artistas con el mismo nombre y apellidos.*/
+/*DELIMITER $$
 
+CREATE PROCEDURE artistas_getNumAtracAnimal(p_apellidos VARCHAR(100), p_nombre VARCHAR(45), OUT p_sal VARCHAR(100))
+BEGIN
+	DECLARE v_nif char(9);
+    DECLARE v_numAtracciones smallint;
+    DECLARE v_numAnimales varchar(50);
+    
+    SELECT nif
+    INTO v_nif
+    FROM ARTISTAS
+    WHERE nombre = p_nombre AND p_apellidos = apellidos;
+    
+    SELECT count(*)
+    INTO v_numAtracciones
+    FROM ATRACCIONES_ARTISTAS
+    where fecha_fin is null and nif_artista=v_nif;
+    
+    CALL artistas_getNumAnimalesCuida(v_nif, v_numAtracciones);
+    
+    SET p_sal = CONCAT(v_nif,':',v_numAtracciones,':',v_numAnimales);
+	
+END$$
+DELIMITER ;*/
 
+-- PROCEDIMIENTOS CON PARÁMETRO DE ENTRADA/SALIDA
 
+/* Ejercicio 1
+Crea un procedimiento de nombre pistas_addAforo al que se le envíe como parámetros el nombre de la pista y una cantidad que representa el incremento del aforo.
+El procedimiento debe devolver en el mismo parámetro el nuevo aforo de la pista.
+Nota: Aún no vimos el uso de IF pero en este método habría que tener en cuenta si el aforo es superior al rango de un smallint...*/
 
+/*DELIMITER $$
 
+CREATE PROCEDURE pistas_addAforo(p_nombrePista VARCHAR(50), INOUT p_incrAforo smallint)
+BEGIN
+	UPDATE PISTAS SET aforo = aforo + p_incrAforo where nombre = p_nombrePista;
+    
+    select aforo into p_incrAforo from pistas where nombre=p_nombrePista;
 
+END$$
 
+DELIMITER ;
 
+SET @dato = 50;	-- Incremento de aforo
+CALL pistas_addAforo('LATERAL1',@dato);	
+SELECT @dato;*/
 
+/* Ejercicio 2
+Crea un procedimiento de nombre artistas_getNombreCompleto al que se le pase como parámetro el nif y devuelva en el mismo parámetro el nombre completo con el formato: apellidos, nombre*/
 
+/*DELIMITER $$
 
+CREATE PROCEDURE artistas_getNombreCompleto(INOUT p_nif varchar(147))
+BEGIN
+	select concat(apellidos,', ',nombre) into p_nif from artistas where nif = p_nif;
 
+END$$
 
+DELIMITER ;
 
+SET @dato = '11111111A';	
+CALL artistas_getNombreCompleto(@dato);	
+SELECT @dato;*/
+
+/* Ejercicio 3
+Crea un procedimiento de nombre animales_addAforo al que se le envíe como parámetros el nombre del animal y el incremento del aforo en la pista en la que trabaja el animal. 
+Debe de hacer uso del procedimiento creado en el ejercicio 1 y debe de devolver empleando los dos parámetros anteriores, el nombre de la pista y su nuevo aforo.*/
+
+/*DELIMITER $$
+
+CREATE PROCEDURE animales_addAforo(INOUT p_nombre VARCHAR(50), INOUT p_incrAforo smallint)
+BEGIN
+
+	select nombre_pista into p_nombre from ANIMALES where nombre=p_nombre;
+    call pistas_addAforo(p_nombre,p_incrAforo);
+    
+END$$
+
+DELIMITER ;
+
+SET @nombre = 'Princesa1';
+SET @aforo = 10;
+
+CALL animales_addAforo(@nombre,@aforo);	
+SELECT @nombre,@aforo;*/
 
