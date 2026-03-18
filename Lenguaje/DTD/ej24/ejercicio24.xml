@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE listado [
+    <!ELEMENT listado (futuro+, divisa+,bono+,letra+)>
+
+    <!ELEMENT futuro (producto, mercado?,(Madrid|Tokio|Nueva_York|Frankfurt))>
+    <!ELEMENT divisa (nombre, tipo_cambio+,(Madrid|Tokio|Nueva_York|Frankfurt))>
+    <!ELEMENT bono (pais_de_procedencia, valor_deseado, valor_minimo, valor_maximo, (Madrid|Tokio|Nueva_York|Frankfurt))>
+    <!ELEMENT letra (tipo_interes, pais_emisor, (Madrid|Tokio|Nueva_York|Frankfurt))>
+
+    <!ATTLIST divisa estable CDATA #IMPLIED>
+    <!ATTLIST bono estable (si | no) #IMPLIED>
+
+    <!-- ELEMENTOS FUTURO -->
+    <!ELEMENT producto (#PCDATA)>
+    <!ELEMENT mercado (#PCDATA)>
+
+    <!-- ELEMENTOS DE DIVISA -->
+    <!ELEMENT nombre (#PCDATA)>
+    <!ELEMENT tipo_cambio (#PCDATA)>
+
+    <!-- ELEMENTOS DE BONO -->
+    <!ELEMENT pais_de_procedencia (#PCDATA)>
+    <!ELEMENT valor_deseado (#PCDATA)>
+    <!ELEMENT valor_minimo (#PCDATA)>
+    <!ELEMENT valor_maximo (#PCDATA)>
+
+    <!-- ELEMENTOS DE LETRA -->
+    <!ELEMENT tipo_interes (#PCDATA)>
+    <!ELEMENT pais_emisor (España|EEUU|Alemania|Japón)>
+
+    <!-- ELEMENTOS DE UBICACIÓN -->
+    <!ELEMENT Madrid EMPTY>
+    <!ELEMENT Tokio EMPTY>
+    <!ELEMENT Nueva_York EMPTY>
+    <!ELEMENT Frankfurt EMPTY>
+
+    <!-- ATRIBUTO PRECIO EN TODAS -->
+    <!ATTLIST futuro precio CDATA #REQUIRED>
+    <!ATTLIST divisa precio CDATA #REQUIRED>
+    <!ATTLIST bono precio CDATA #REQUIRED>
+    <!ATTLIST letra precio CDATA #REQUIRED>
+]>
+
+<listado>
+
+    <!-- Primero: uno o varios futuros -->
+    <futuro precio="1520.75">
+        <producto>Acción Telefónica</producto>
+        <mercado>España</mercado>
+        <Madrid/>
+    </futuro>
+
+    <futuro precio="980.40">
+        <producto>Índice Nikkei</producto>
+        <mercado>Japón</mercado>
+        <Tokio/>
+    </futuro>
+
+    <!-- Después: una o varias divisas -->
+    <divisa precio="1.12" estable="si">
+        <nombre>Euro</nombre>
+        <tipo_cambio>Dólar</tipo_cambio>
+        <tipo_cambio>Yen</tipo_cambio>
+        <Frankfurt/>
+    </divisa>
+
+    <divisa precio="149.85" estable="no">
+        <nombre>Dólar</nombre>
+        <tipo_cambio>Euro</tipo_cambio>
+        <tipo_cambio>Yen</tipo_cambio>
+        <Nueva_York/>
+    </divisa>
+
+    <!-- Después: uno o varios bonos -->
+    <bono precio="1040.00" estable="si">
+        <pais_de_procedencia>España</pais_de_procedencia>
+        <valor_deseado>1050.00</valor_deseado>
+        <valor_minimo>1000.00</valor_minimo>
+        <valor_maximo>1100.00</valor_maximo>
+        <Madrid/>
+    </bono>
+
+    <bono precio="2120.50" estable="no">
+        <pais_de_procedencia>Alemania</pais_de_procedencia>
+        <valor_deseado>2200.00</valor_deseado>
+        <valor_minimo>2000.00</valor_minimo>
+        <valor_maximo>2300.00</valor_maximo>
+        <Frankfurt/>
+    </bono>
+
+    <!-- Después: una o varias letras -->
+    <letra precio="500.00">
+        <tipo_interes>3.5%</tipo_interes>
+        <pais_emisor>España</pais_emisor>
+        <Madrid/>
+    </letra>
+
+    <letra precio="750.00">
+        <tipo_interes>4.1%</tipo_interes>
+        <pais_emisor>EEUU</pais_emisor>
+        <Nueva_York/>
+    </letra>
+
+</listado>

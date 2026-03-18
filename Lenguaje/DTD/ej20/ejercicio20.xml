@@ -1,19 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!DOCTYPE entregas [
-    <!ELEMENT entregas (lote)+>
+<!DOCTYPE entrega [
+    <!ELEMENT entrega (lote)+>
     <!ELEMENT lote (pale)+>
+
     <!ELEMENT pale (numero-cajas,contenido,peso,forma-manipulacion)>
-    <!ELEMENT contenido (nombre,procedencia,numero-serie,peso-ind,unidad-peso?)>
+
     <!ELEMENT numero-cajas (#PCDATA)>
     <!ELEMENT peso (#PCDATA)>
     <!ELEMENT forma-manipulacion (#PCDATA)>
+
+    <!ELEMENT contenido (nombre,procedencia?,numero-serie,peso-ind,unidad-peso?)>
+
     <!ELEMENT nombre (#PCDATA)>
-    <!ELEMENT procedencia (pais)*>
-    <!ELEMENT pais (#PCDATA)>
+    <!ELEMENT procedencia (pais+)>
+        <!ELEMENT pais (#PCDATA)>
     <!ELEMENT numero-serie (#PCDATA)>
     <!ELEMENT peso-ind (#PCDATA)>
     <!ELEMENT unidad-peso (#PCDATA)>
 ]>
-<entregas>
-</entregas>
+<entrega>
+    <lote>
+        <pale>
+            <numero-cajas>3</numero-cajas>
+            <contenido>
+                <nombre>Guisantes</nombre>
+                <procedencia>
+                    <pais>España</pais>
+                </procedencia>
+                <numero-serie>21313123</numero-serie>
+                <peso-ind>3213</peso-ind>
+                <unidad-peso>kg</unidad-peso>
+            </contenido>
+            <peso>863</peso>
+            <forma-manipulacion>fdsfds</forma-manipulacion>
+        </pale>
+        <pale>
+            <numero-cajas>3</numero-cajas>
+            <contenido>
+                <nombre>Guisantes</nombre>
+                <procedencia>
+                    <pais>España</pais>
+                </procedencia>
+                <numero-serie>21313123</numero-serie>
+                <peso-ind>3213</peso-ind>
+                <unidad-peso>kg</unidad-peso>
+            </contenido>
+            <peso>863</peso>
+            <forma-manipulacion>fdsfds</forma-manipulacion>
+        </pale>
+    </lote>
+
+    <lote>
+        <pale>
+            <numero-cajas>3</numero-cajas>
+            <contenido>
+                <nombre>Guisantes</nombre>
+                <procedencia>
+                    <pais>España</pais>
+                </procedencia>
+                <numero-serie>21313123</numero-serie>
+                <peso-ind>3213</peso-ind>
+                <unidad-peso>kg</unidad-peso>
+            </contenido>
+            <peso>863</peso>
+            <forma-manipulacion>fdsfds</forma-manipulacion>
+        </pale>
+        <pale>
+            <numero-cajas>3</numero-cajas>
+            <contenido>
+                <nombre>Guisantes</nombre>
+                <procedencia>
+                    <pais>España</pais>
+                </procedencia>
+                <numero-serie>21313123</numero-serie>
+                <peso-ind>3213</peso-ind>
+                <unidad-peso>kg</unidad-peso>
+            </contenido>
+            <peso>863</peso>
+            <forma-manipulacion>fdsfds</forma-manipulacion>
+        </pale>
+    </lote>
+
+
+</entrega>

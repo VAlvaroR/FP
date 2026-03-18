@@ -3,17 +3,17 @@
 <!DOCTYPE listacompras [
     <!ELEMENT listacompras (venta)+>
     <!ELEMENT venta (ventacredito | ventainmediata)>
-    <!ELEMENT ventacredito (fechafinpago?,cantidad)>
+    <!ELEMENT ventacredito (#PCDATA)>
+    <!ATTLIST ventacredito fechafinpago CDATA #IMPLIED>
+    <!ATTLIST ventacredito cantidad CDATA #REQUIRED>
     <!ELEMENT ventainmediata (cantidad,divisa)>
-    <!ELEMENT fechafinpago (#PCDATA)>
     <!ELEMENT cantidad (#PCDATA)>
     <!ELEMENT divisa (#PCDATA)>
 ]>
 
 <listacompras>
     <venta>
-        <ventacredito>
-            <cantidad>2</cantidad>
+        <ventacredito fechafinpago="123131" cantidad="2">
         </ventacredito>
     </venta>
 

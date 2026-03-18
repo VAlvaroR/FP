@@ -2,34 +2,36 @@
 
 <!DOCTYPE listafacturas [
     <!ELEMENT listafacturas (factura)+>
-    <!ELEMENT factura (fecha?, emisor,cif,pagador,importe)>
-    <!ELEMENT fecha (#PCDATA)>
+    <!ELEMENT factura (emisor,pagador,importe)>
+    <!ATTLIST factura fecha CDATA #IMPLIED>
+    <!ATTLIST emisor cif CDATA #IMPLIED>
+    <!ATTLIST pagador cif CDATA #IMPLIED>
     <!ELEMENT emisor (nombre,volumenventas?)>
     <!ELEMENT pagador (nombre,volumenventas?)>
     <!ELEMENT nombre (#PCDATA)>
     <!ELEMENT volumenventas (#PCDATA)>
-    <!ELEMENT cif (#PCDATA)>
+
     <!ELEMENT importe (#PCDATA)>
 ]>
 <listafacturas>
-    <factura>
-        <emisor>
+    <factura fecha="01/01/0101">
+        <emisor cif="1293834">
             <nombre>Salvi</nombre>
             <volumenventas>2</volumenventas>
         </emisor>
-        <cif>1293834</cif>
+        
         <pagador>
             <nombre>Carlos</nombre>
         </pagador>
         <importe>2442</importe>
     </factura>
 
-    <factura>
-        <emisor>
+    <factura fecha="01/01/0101">
+        <emisor cif="1293834">
             <nombre>Salvi</nombre>
             <volumenventas>2</volumenventas>
         </emisor>
-        <cif>1293834</cif>
+        
         <pagador>
             <nombre>Carlos</nombre>
         </pagador>
