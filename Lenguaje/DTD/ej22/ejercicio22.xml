@@ -3,7 +3,7 @@
     <!ELEMENT pedido (tractor+)>
     <!ELEMENT tractor (componente+)>
 
-    <!ELEMENT componente (fechaentrega?,fragil?,peso,numserie,kmmaximos?)>
+    <!ELEMENT componente (fechaentrega?,(fragil | nofragil),peso,numserie,kmmaximos?)>
 
     <!-- ATRIBUTOS COMPONENTE -->
     <!ATTLIST componente nombrefabricante CDATA #REQUIRED>
@@ -12,6 +12,7 @@
     <!-- ELEMENTOS COMPONENTE -->
     <!ELEMENT fechaentrega (dia?,mes,anio)>
     <!ELEMENT fragil EMPTY>
+    <!ELEMENT nofragil EMPTY>
     <!ELEMENT peso (#PCDATA)>
     <!ELEMENT numserie (#PCDATA)>
     <!ELEMENT kmmaximos (#PCDATA)>
@@ -40,6 +41,7 @@
                 <mes>1</mes>
                 <anio>2019</anio>
             </fechaentrega>
+            <nofragil />
             <peso unidad="g">1450</peso>
             <numserie>00D</numserie>
             <kmmaximos>25000</kmmaximos>

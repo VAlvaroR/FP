@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE listado [
     <!ELEMENT listado (futuro+, divisa+,bono+,letra+)>
 
@@ -27,13 +26,18 @@
 
     <!-- ELEMENTOS DE LETRA -->
     <!ELEMENT tipo_interes (#PCDATA)>
-    <!ELEMENT pais_emisor (España|EEUU|Alemania|Japón)>
+    <!ELEMENT pais_emisor (Espania|EEUU|Alemania|Japon)>
 
     <!-- ELEMENTOS DE UBICACIÓN -->
     <!ELEMENT Madrid EMPTY>
     <!ELEMENT Tokio EMPTY>
     <!ELEMENT Nueva_York EMPTY>
     <!ELEMENT Frankfurt EMPTY>
+
+    <!ELEMENT Espania EMPTY>
+    <!ELEMENT Japon EMPTY>
+    <!ELEMENT EEUU EMPTY>
+    <!ELEMENT Alemania EMPTY>
 
     <!-- ATRIBUTO PRECIO EN TODAS -->
     <!ATTLIST futuro precio CDATA #REQUIRED>
@@ -48,13 +52,13 @@
     <futuro precio="1520.75">
         <producto>Acción Telefónica</producto>
         <mercado>España</mercado>
-        <Madrid/>
+        <Madrid />
     </futuro>
 
     <futuro precio="980.40">
         <producto>Índice Nikkei</producto>
         <mercado>Japón</mercado>
-        <Tokio/>
+        <Tokio />
     </futuro>
 
     <!-- Después: una o varias divisas -->
@@ -62,14 +66,14 @@
         <nombre>Euro</nombre>
         <tipo_cambio>Dólar</tipo_cambio>
         <tipo_cambio>Yen</tipo_cambio>
-        <Frankfurt/>
+        <Frankfurt />
     </divisa>
 
     <divisa precio="149.85" estable="no">
         <nombre>Dólar</nombre>
         <tipo_cambio>Euro</tipo_cambio>
         <tipo_cambio>Yen</tipo_cambio>
-        <Nueva_York/>
+        <Nueva_York />
     </divisa>
 
     <!-- Después: uno o varios bonos -->
@@ -78,7 +82,7 @@
         <valor_deseado>1050.00</valor_deseado>
         <valor_minimo>1000.00</valor_minimo>
         <valor_maximo>1100.00</valor_maximo>
-        <Madrid/>
+        <Madrid />
     </bono>
 
     <bono precio="2120.50" estable="no">
@@ -86,20 +90,24 @@
         <valor_deseado>2200.00</valor_deseado>
         <valor_minimo>2000.00</valor_minimo>
         <valor_maximo>2300.00</valor_maximo>
-        <Frankfurt/>
+        <Frankfurt />
     </bono>
 
     <!-- Después: una o varias letras -->
     <letra precio="500.00">
         <tipo_interes>3.5%</tipo_interes>
-        <pais_emisor>España</pais_emisor>
-        <Madrid/>
+        <pais_emisor>
+            <Espania />
+        </pais_emisor>
+        <Madrid />
     </letra>
 
     <letra precio="750.00">
         <tipo_interes>4.1%</tipo_interes>
-        <pais_emisor>EEUU</pais_emisor>
-        <Nueva_York/>
+        <pais_emisor>
+            <EEUU />
+        </pais_emisor>
+        <Nueva_York />
     </letra>
 
 </listado>
