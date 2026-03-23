@@ -2,7 +2,7 @@
 <!DOCTYPE operaciones [
 
     <!ELEMENT operaciones (operacion+)>
-    <!ELEMENT operacion (venta|compra)*>
+    <!ELEMENT operacion (venta|compra)+>
 
     <!-- ELEMENTOS VENTA -->
     <!ELEMENT venta (titulosvendidos)>
