@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE listado [
+    <!ELEMENT listado (afiliado)+>
+
+    <!ELEMENT afiliado (nombre, apellidos, sit_lab, fec_nac,list_baja, list_prest_cobr)>
+    <!ATTLIST afiliado dni CDATA #REQUIRED>
+
+    <!ELEMENT nombre (#PCDATA)>
+    <!ELEMENT apellidos (#PCDATA)>
+    <!ELEMENT sit_lab (#PCDATA)>
+
+    <!ELEMENT fec_nac (dia,mes,anio)>
+
+    <!ELEMENT dia (#PCDATA)>
+    <!ELEMENT mes (#PCDATA)>
+    <!ELEMENT anio (#PCDATA)>
+
+    <!ELEMENT list_baja (baja)*>
+
+    <!ELEMENT baja (causa,fecha_inicio,fecha_final?)>
+
+    <!ELEMENT causa (#PCDATA)>
+    <!ELEMENT fecha_inicio (#PCDATA)>
+    <!ELEMENT fecha_final (#PCDATA)>
+
+    <!ELEMENT list_prest_cobr (prestacion)*>
+
+    <!ELEMENT prestacion (cantidad_percibida,fecha_inicio,fecha_final)>
+
+    <!ELEMENT cantidad_percibida (#PCDATA)>
+]>
+
+<listado>
+    <afiliado dni="23324454K">
+        <nombre>Álvaro</nombre>
+        <apellidos>García López</apellidos>
+        <sit_lab>en_activo</sit_lab>
+        <fec_nac>
+            <dia>15</dia>
+            <mes>6</mes>
+            <anio>1998</anio>
+        </fec_nac>
+        <list_baja>
+            <baja>
+                <causa>Lesión de espalda</causa>
+                <fecha_inicio>2024-01-10</fecha_inicio>
+                <fecha_final>2024-02-05</fecha_final>
+            </baja>
+            <baja>
+                <causa>Gripe</causa>
+                <fecha_inicio>2025-11-03</fecha_inicio>
+            </baja>
+        </list_baja>
+        <list_prest_cobr>
+            <prestacion>
+                <cantidad_percibida>850.50</cantidad_percibida>
+                <fecha_inicio>2023-03-01</fecha_inicio>
+                <fecha_final>2023-06-01</fecha_final>
+            </prestacion>
+        </list_prest_cobr>
+    </afiliado>
+
+    <afiliado dni="95768854L">
+        <nombre>Lucía</nombre>
+        <apellidos>Martín Ruiz</apellidos>
+        <sit_lab>en_paro</sit_lab>
+        <fec_nac>
+            <dia>8</dia>
+            <mes>11</mes>
+            <anio>1987</anio>
+        </fec_nac>
+        <list_baja>
+        </list_baja>
+        <list_prest_cobr>
+            <prestacion>
+                <cantidad_percibida>600</cantidad_percibida>
+                <fecha_inicio>2025-01-01</fecha_inicio>
+                <fecha_final>2025-04-01</fecha_final>
+            </prestacion>
+            <prestacion>
+                <cantidad_percibida>720</cantidad_percibida>
+                <fecha_inicio>2025-05-01</fecha_inicio>
+                <fecha_final>2025-08-01</fecha_final>
+            </prestacion>
+        </list_prest_cobr>
+    </afiliado>
+</listado>

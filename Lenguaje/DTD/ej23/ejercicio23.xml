@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pedido [
+    <!ELEMENT pedido (libro | cuaderno | lapiz)*>
+
+    <!ELEMENT libro EMPTY>
+    <!ATTLIST libro titulo CDATA #REQUIRED>
+
+    <!ELEMENT cuaderno EMPTY>
+    <!ATTLIST cuaderno num_hojas CDATA #IMPLIED>
+
+    <!ELEMENT lapiz (numero)>
+    <!ELEMENT numero (#PCDATA)>
+]>
+
+<pedido>
+    <libro titulo="Don Quijote" />
+    <libro titulo="Cien años de soledad" />
+    <cuaderno num_hojas="80" />
+    <lapiz>
+        <numero>2</numero>
+    </lapiz>
+    <lapiz>
+        <numero>4</numero>
+    </lapiz>
+
+    <cuaderno />
+    <lapiz>
+        <numero>6</numero>
+    </lapiz>
+    <lapiz>
+        <numero>1</numero>
+    </lapiz>
+    <libro titulo="El principito" />
+</pedido>
