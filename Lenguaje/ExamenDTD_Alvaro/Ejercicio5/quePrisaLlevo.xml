@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet type="text/css" href="./estilos.css"?>
+
+<club>
+    <runner id="r1">
+        <nombre>Ana Torres</nombre>
+        <edad>22</edad>
+        <categoria>senior</categoria>
+        <tiempo5k>22:31</tiempo5k>
+    </runner>
+    <runner id="r2">
+        <nombre>Pablo Gil</nombre>
+        <edad>19</edad>
+        <categoria>sub23</categoria>
+        <tiempo5k>20:45</tiempo5k>
+    </runner>
+    <runner id="r3">
+        <nombre>Marta Ruiz</nombre>
+        <edad>34</edad>
+        <categoria>veterana</categoria>
+        <tiempo5k>24:10</tiempo5k>
+    </runner>
+    <runner id="r4">
+        <nombre>Diego León</nombre>
+        <edad>28</edad>
+        <categoria>senior</categoria>
+        <tiempo5k>21:58</tiempo5k>
+    </runner>
+</club>

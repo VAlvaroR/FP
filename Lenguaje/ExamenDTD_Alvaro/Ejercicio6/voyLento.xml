@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE clinica [
+    <!ELEMENT clinica (fisioterapeutas, pacientes,tratamientos)>
+    <!ATTLIST clinica nombre CDATA #REQUIRED>
+    <!ATTLIST clinica ciudad CDATA #IMPLIED>
+
+    <!ELEMENT fisioterapeutas (fisioterapeuta)+>
+
+    <!ELEMENT fisioterapeuta (nombre, telefono, email)>
+    <!ATTLIST fisioterapeuta id ID #REQUIRED>
+    <!ATTLIST fisioterapeuta especialidad CDATA #REQUIRED>
+
+    <!ELEMENT nombre (#PCDATA)>
+    <!ELEMENT telefono (#PCDATA)>
+    <!ELEMENT email (#PCDATA)>
+
+    <!ELEMENT pacientes (paciente)+>
+
+    <!ELEMENT paciente (nombre, edad, observaciones?)>
+    <!ATTLIST paciente id ID #REQUIRED>
+    <!ATTLIST paciente estado (activo|alta) "activo">
+
+    <!ELEMENT edad (#PCDATA)>
+    <!ELEMENT observaciones (#PCDATA)>
+
+    <!ELEMENT tratamientos (tratamiento)+>
+
+    <!ELEMENT tratamiento (nombre, duracion, precio, materiales?, sesiones)>
+    <!ATTLIST tratamiento codigo ID #REQUIRED>
+    <!ATTLIST tratamiento tipo CDATA #REQUIRED>
+    <!ATTLIST tratamiento pacienteRef IDREF #REQUIRED>
+    <!ATTLIST tratamiento fisioRef IDREF #REQUIRED>
+
+    <!ELEMENT duracion (#PCDATA)>
+    <!ELEMENT precio (#PCDATA)>
+    <!ELEMENT materiales (material)+>
+    <!ELEMENT sesiones (sesion)+>
+
+    <!ELEMENT material (#PCDATA)>
+
+    <!ELEMENT sesion EMPTY>
+    <!ATTLIST sesion fecha CDATA #REQUIRED>
+]>
+
+<clinica nombre="voyLento" ciudad="Valencia">
+    <fisioterapeutas>
+        <fisioterapeuta id="f1" especialidad="deportiva">
+            <nombre>Laura Pérez</nombre>
+            <telefono>600123123</telefono>
+            <email>laura@voylento.es</email>
+        </fisioterapeuta>
+        <fisioterapeuta id="f2" especialidad="neurologica">
+            <nombre>Rubén García</nombre>
+            <telefono>600222333</telefono>
+            <email>ruben@voylento.es</email>
+        </fisioterapeuta>
+    </fisioterapeutas>
+    <pacientes>
+        <paciente id="p1" estado="activo">
+            <nombre>Adrián López</nombre>
+            <edad>31</edad>
+            <observaciones>Molestias en rodilla derecha</observaciones>
+        </paciente>
+        <paciente id="p2" estado="alta">
+            <nombre>Clara Martín</nombre>
+            <edad>27</edad>
+        </paciente>
+        <paciente id="p3">
+            <nombre>Elena Sanz</nombre>
+            <edad>45</edad>
+            <observaciones><![CDATA[Paciente con dolor lumbar y episodios de rigidez al levantarse.]]></observaciones>
+        </paciente>
+    </pacientes>
+    <tratamientos>
+        <tratamiento codigo="t1" tipo="manual" pacienteRef="p1" fisioRef="f1">
+            <nombre>Masaje de descarga</nombre>
+            <duracion>45</duracion>
+            <precio>35</precio>
+            <sesiones>
+                <sesion fecha="2026-02-10" />
+                <sesion fecha="2026-02-17" />
+            </sesiones>
+        </tratamiento>
+        <tratamiento codigo="t2" tipo="ejercicio" pacienteRef="p3"
+            fisioRef="f2">
+            <nombre>Reeducación postural</nombre>
+            <duracion>60</duracion>
+            <precio>40</precio>
+            <materiales>
+                <material>Goma elástica</material>
+                <material>Pelota pequeña</material>
+            </materiales>
+            <sesiones>
+                <sesion fecha="2026-02-12" />
+            </sesiones>
+        </tratamiento>
+        <tratamiento codigo="t3" tipo="electroterapia" pacienteRef="p1"
+            fisioRef="f2">
+            <nombre>TENS lumbar</nombre>
+            <duracion>30</duracion>
+            <precio>25</precio>
+            <sesiones>
+                <sesion fecha="2026-02-20" />
+                <sesion fecha="2026-02-27" />
+                <sesion fecha="2026-03-05" />
+            </sesiones>
+        </tratamiento>
+    </tratamientos>
+</clinica>
